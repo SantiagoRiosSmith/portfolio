@@ -1,12 +1,26 @@
 function Home() {
-    return (
-        <div>
-            <h1>Welcome to My Portfolio</h1>
-            <p>
-                I'm Santiago Rios Smith, a Computer Science student at Western University.
-            </p>
-        </div>
-    );
+  return (
+    <div className="hero">
+
+    <h1>
+  Santiago <span className="accent">Rios Smith</span>
+    </h1>
+
+      <h2>Computer Science Student</h2>
+
+      <p className="description">
+        I'm a Computer Science student at Western University
+        passionate about software development, web applications,
+        DevOps, and learning new technologies.
+      </p>
+
+      <div className="buttons">
+        <button>View Projects</button>
+        <button>Download Resume</button>
+      </div>
+
+    </div>
+  );
 }
 
 export default Home;
