@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import PixelForge from "./pages/PixelForge";
+import ConwaysGameOfLife from "./pages/ConwaysGameOfLife";
 
 import "./App.css";
 
@@ -41,6 +42,11 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/pixelforge" element={<PixelForge />} />
+
+        <Route
+            path="/conways-game-of-life"
+            element={<ConwaysGameOfLife />}
+        />
 
       </Routes>
 

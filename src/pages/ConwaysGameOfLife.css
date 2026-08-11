@@ -1,0 +1,316 @@
+/* --------------------------------------------------
+   PAGE
+-------------------------------------------------- */
+
+.conway-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+
+    background: #0f172a;
+    color: white;
+}
+
+.conway-subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    opacity: 0.85;
+}
+
+.conway-content h1,
+.conway-subtitle {
+    text-align: center;
+}
+
+
+/* --------------------------------------------------
+   GAME OF LIFE BACKGROUND
+-------------------------------------------------- */
+
+.conway-background {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 0;
+
+    background: #0f172a;
+
+    filter: blur(2px);
+    opacity: 1.9;
+}
+
+
+/* --------------------------------------------------
+   16 x 16 GRID
+-------------------------------------------------- */
+
+.conway-grid {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+
+    width: 100%;
+    height: 100%;
+
+    gap: 0;
+}
+
+
+/* --------------------------------------------------
+   CELLS
+-------------------------------------------------- */
+
+.conway-cell {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------
+   DEAD CELL
+-------------------------------------------------- */
+
+.conway-cell.dead {
+    background: #2563eb;
+
+    opacity: 0.18;
+}
+
+
+/* --------------------------------------------------
+   ALIVE CELL
+-------------------------------------------------- */
+
+.conway-cell.alive {
+    background: #ffffff;
+
+    opacity: 1;
+
+    box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.35);
+}
+
+
+/* --------------------------------------------------
+   INFORMATION OVERLAY
+-------------------------------------------------- */
+
+.conway-overlay {
+    position: relative;
+
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 100px 24px;
+}
+
+
+/* --------------------------------------------------
+   CONTENT
+-------------------------------------------------- */
+
+.conway-content {
+    width: 100%;
+    max-width: 900px;
+
+    padding: 48px;
+
+    border-radius: 20px;
+
+    background: rgba(15, 23, 42, 0.88);
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* --------------------------------------------------
+   TITLE
+-------------------------------------------------- */
+
+.conway-content h1 {
+    margin: 0;
+
+    font-size: 48px;
+    line-height: 1.1;
+
+    font-weight: 700;
+}
+
+
+/* --------------------------------------------------
+   DATE
+-------------------------------------------------- */
+
+.conway-date {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #94a3b8;
+
+    font-size: 15px;
+}
+
+
+/* --------------------------------------------------
+   INTRO
+-------------------------------------------------- */
+
+.conway-intro {
+    margin-top: 28px;
+
+    max-width: 750px;
+
+    color: #cbd5e1;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* --------------------------------------------------
+   SECTIONS
+-------------------------------------------------- */
+
+.conway-section {
+    margin-top: 45px;
+}
+
+.conway-section h2 {
+    margin-bottom: 12px;
+
+    font-size: 28px;
+}
+
+.conway-section p {
+    color: #cbd5e1;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* --------------------------------------------------
+   GAME RULES
+-------------------------------------------------- */
+
+.conway-rules {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-top: 25px;
+}
+
+.conway-rules > div {
+    display: flex;
+    flex-direction: column;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.conway-rules strong {
+    margin-bottom: 6px;
+
+    color: white;
+}
+
+.conway-rules span {
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+/* --------------------------------------------------
+   TECHNOLOGIES
+-------------------------------------------------- */
+
+.conway-tech {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 40px;
+}
+
+.conway-tech span {
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+}
+
+
+/* --------------------------------------------------
+   GENERATION COUNTER
+-------------------------------------------------- */
+
+.conway-generation {
+    margin-top: 30px;
+
+    color: #94a3b8;
+
+    font-family: monospace;
+
+    font-size: 14px;
+}
+
+
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+    .conway-overlay {
+        padding: 60px 16px;
+    }
+
+    .conway-content {
+        padding: 30px 22px;
+    }
+
+    .conway-content h1 {
+        font-size: 36px;
+    }
+
+    .conway-rules {
+        grid-template-columns: 1fr;
+    }
+
+}
