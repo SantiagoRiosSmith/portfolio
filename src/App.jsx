@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import PixelForge from "./pages/PixelForge";
 
 import "./App.css";
 
@@ -38,6 +39,8 @@ function App() {
         <Route path="/projects" element={<Projects />} />
 
         <Route path="/contact" element={<Contact />} />
+
+        <Route path="/pixelforge" element={<PixelForge />} />
 
       </Routes>
 
