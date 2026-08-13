@@ -553,9 +553,12 @@ function Projects() {
 
 
 
-                        <button className="project-button">
+                        <Link
+                            to="/conways-game-of-life"
+                            className="project-button"
+                        >
                             Learn More
-                        </button>
+                        </Link>
 
 
                     </div>
