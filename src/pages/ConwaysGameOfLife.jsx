@@ -352,6 +352,7 @@ function ConwaysGameOfLife() {
     // --------------------------------------------------
 
     useEffect(() => {
+        window.scrollTo(0, 0);
 
         /*
          * Your Java program keeps:
