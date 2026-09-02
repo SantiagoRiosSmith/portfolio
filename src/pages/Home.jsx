@@ -9,7 +9,7 @@ function Home() {
     </h1>
 
     <h2>
-        Computer Science Student
+        4th Year Computer Science Student at Western University
     </h2>
 
     <p className="description">
