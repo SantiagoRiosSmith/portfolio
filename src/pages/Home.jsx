@@ -15,7 +15,7 @@ function Home() {
     <p className="description">
         I'm a Computer Science student at Western University
         passionate about software development, web applications,
-        DevOps, and learning new technologies.
+        and learning new technologies.
     </p>
 
     <div className="buttons">

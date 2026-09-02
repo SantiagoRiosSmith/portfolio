@@ -947,3 +947,297 @@ a:hover {
 
     margin-top: 25px;
 }
+
+.about-page {
+    min-height: 85vh;
+    padding: 70px 20px;
+    background: #eef2f7;
+    color: #334155;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative shapes */
+
+.about-page::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background: #bfdbfe;
+    border-radius: 50%;
+    top: -80px;
+    right: 10%;
+    z-index: 0;
+}
+
+.about-page::after {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: #dbeafe;
+    border-radius: 20px;
+    bottom: 8%;
+    left: 8%;
+    transform: rotate(20deg);
+    z-index: 0;
+}
+
+/* Green triangle */
+.about-page {
+    position: relative;
+}
+
+.about-page .technology-section::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-bottom: 130px solid #bbf7d0;
+    right: 12%;
+    top: 38%;
+    transform: rotate(15deg);
+    z-index: 0;
+}
+
+/* Small purple shape */
+.about-page .technology-section::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: #ddd6fe;
+    border-radius: 50%;
+    left: 12%;
+    top: 45%;
+    z-index: 0;
+}
+
+.about-page .green-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 65px solid transparent;
+    border-right: 65px solid transparent;
+    border-bottom: 115px solid #bbf7d0;
+    right: 15%;
+    top: 42%;
+    transform: rotate(18deg);
+    z-index: 0;
+}
+
+.about-page .orange-circle {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    background: #fed7aa;
+    border-radius: 50%;
+    left: 14%;
+    top: 48%;
+    z-index: 0;
+}
+
+.about-page h1,
+.about-page p,
+.about-page h2,
+.about-page .technology-section {
+    position: relative;
+    z-index: 1;
+}
+
+.about-page h1 {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    color: #172033;
+    font-size: 56px;
+    text-align: center;
+}
+
+.about-page h1::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: #3b82f6;
+    margin: 18px auto 0;
+    border-radius: 2px;
+}
+
+.about-page p {
+    max-width: 850px;
+    margin: 0 auto 25px;
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+.about-page h2 {
+    max-width: 850px;
+    margin: 60px auto 25px;
+    padding-left: 15px;
+    border-left: 5px solid #3b82f6;
+    color: #172033;
+    font-size: 32px;
+}
+
+.technology-section {
+    max-width: 850px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.technology-group {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #d8dee8;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.technology-group h3 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: #2563eb;
+    font-size: 21px;
+}
+
+.technology-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.technology-list span {
+    background: #e8f0ff;
+    color: #1e40af;
+    padding: 8px 13px;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.contact-page {
+    min-height: 85vh;
+    padding: 70px 20px;
+    background: #eef2f7;
+    color: #334155;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-content {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.contact-page h1 {
+    margin: 0 0 20px;
+    color: #172033;
+    font-size: 56px;
+    text-align: center;
+}
+
+.contact-page h1::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: #3b82f6;
+    margin: 18px auto 0;
+    border-radius: 2px;
+}
+
+.contact-intro {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    text-align: center;
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #d8dee8;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.contact-card h2 {
+    margin-top: 0;
+    color: #2563eb;
+    font-size: 24px;
+}
+
+.contact-card p {
+    font-size: 17px;
+}
+
+.contact-card a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+
+/* Decorative shapes */
+
+.purple-circle {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: #ddd6fe;
+    border-radius: 50%;
+    top: 100px;
+    left: 8%;
+    z-index: 0;
+}
+
+.yellow-diamond {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: #fde68a;
+    right: 10%;
+    top: 32%;
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.blue-circle {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: #bfdbfe;
+    bottom: 12%;
+    right: 20%;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.green-rectangle {
+    position: absolute;
+    width: 130px;
+    height: 55px;
+    background: #bbf7d0;
+    bottom: 18%;
+    left: 12%;
+    transform: rotate(-15deg);
+    border-radius: 8px;
+    z-index: 0;
+}
