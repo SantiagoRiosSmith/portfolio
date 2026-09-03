@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import conwayVideo from "../assets/projects/conway-game-of-life/GameOfLife.mp4";
 import arduinoVideo from "../assets/projects/conway-arduino/conway-arduino.mp4";
 
 import originalPhoto from "../assets/projects/pixelforge/originalPhoto.jpeg";
 import pixelForgeImage from "../assets/projects/pixelforge/GitHubPFP.png";
+
 import { Link } from "react-router-dom";
+
 
 function Projects() {
 
@@ -15,6 +17,92 @@ function Projects() {
         b: 42
     });
 
+    // References to the videos
+    const videoRefs = useRef([]);
+
+
+    /*
+     * --------------------------------------------------------
+     * VIDEO PLAYBACK
+     * --------------------------------------------------------
+     *
+     * Only one video can play at a time.
+     *
+     * When a video becomes visible, all other videos
+     * are paused and the visible video starts playing.
+     */
+
+    useEffect(() => {
+
+        const videos = videoRefs.current.filter(Boolean);
+
+        if (videos.length === 0) {
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    const video = entry.target;
+
+                    if (entry.isIntersecting) {
+
+                        // Pause every other video
+                        videos.forEach((otherVideo) => {
+
+                            if (otherVideo !== video) {
+                                otherVideo.pause();
+                            }
+
+                        });
+
+                        // Play the visible video
+                        video.play().catch(() => {});
+
+                    } else {
+
+                        // Pause videos that are no longer visible
+                        video.pause();
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.25
+            }
+        );
+
+
+        // Observe both videos
+        videos.forEach((video) => {
+            observer.observe(video);
+        });
+
+
+        // Cleanup
+        return () => {
+
+            observer.disconnect();
+
+            videos.forEach((video) => {
+                video.pause();
+            });
+
+        };
+
+    }, []);
+
+
+    /*
+     * --------------------------------------------------------
+     * BACKGROUND COLOR
+     * --------------------------------------------------------
+     */
+
     useEffect(() => {
 
         let targetColor = {
@@ -22,6 +110,7 @@ function Projects() {
             g: 23,
             b: 42
         };
+
 
         let animationFrame;
 
@@ -41,11 +130,14 @@ function Projects() {
                 const rect =
                     section.getBoundingClientRect();
 
+
                 const sectionCenter =
                     rect.top + rect.height / 2;
 
+
                 const screenCenter =
                     window.innerHeight / 2;
+
 
                 const distance =
                     Math.abs(
@@ -63,7 +155,9 @@ function Projects() {
             });
 
 
-            if (!closestSection) return;
+            if (!closestSection) {
+                return;
+            }
 
 
             const nextSection =
@@ -167,31 +261,60 @@ function Projects() {
         /*
          * Smoothly move the actual background
          * toward the target color.
+         *
+         * This updates the CSS variable directly
+         * instead of causing React to re-render
+         * the entire Projects component every frame.
          */
+
+        let currentColor = {
+            r: 15,
+            g: 23,
+            b: 42
+        };
+
 
         const animateColor = () => {
 
-            setBackgroundColor((current) => ({
+            currentColor = {
 
                 r:
-                    current.r +
+                    currentColor.r +
                     (targetColor.r -
-                        current.r) *
+                        currentColor.r) *
                         0.04,
 
                 g:
-                    current.g +
+                    currentColor.g +
                     (targetColor.g -
-                        current.g) *
+                        currentColor.g) *
                         0.04,
 
                 b:
-                    current.b +
+                    currentColor.b +
                     (targetColor.b -
-                        current.b) *
+                        currentColor.b) *
                         0.04
 
-            }));
+            };
+
+
+            const projectsPage =
+                document.querySelector(".projects-page");
+
+
+            if (projectsPage) {
+
+                projectsPage.style.setProperty(
+                    "--background-color",
+                    `rgb(
+                        ${currentColor.r},
+                        ${currentColor.g},
+                        ${currentColor.b}
+                    )`
+                );
+
+            }
 
 
             animationFrame =
@@ -282,7 +405,6 @@ function Projects() {
             </section>
 
 
-
             {/* PIXELFORGE */}
 
             <section
@@ -295,7 +417,6 @@ function Projects() {
             >
 
                 <div className="pixelforge-content">
-
 
                     <div className="project-title">
 
@@ -310,9 +431,7 @@ function Projects() {
                     </div>
 
 
-
                     <div className="pixelforge-images">
-
 
                         <div className="pixelforge-image">
 
@@ -328,11 +447,9 @@ function Projects() {
                         </div>
 
 
-
                         <div className="pixelforge-arrow">
                             →
                         </div>
-
 
 
                         <div className="pixelforge-image">
@@ -348,9 +465,7 @@ function Projects() {
 
                         </div>
 
-
                     </div>
-
 
 
                     <div className="pixelforge-description">
@@ -367,7 +482,6 @@ function Projects() {
                         </p>
 
 
-
                         <div className="pixelforge-bottom">
 
                             <div className="tech-list">
@@ -377,6 +491,7 @@ function Projects() {
                                 <span>GLFW</span>
 
                             </div>
+
 
                             <div className="pixelforge-buttons">
 
@@ -402,7 +517,6 @@ function Projects() {
             </section>
 
 
-
             {/* CONWAY'S GAME OF LIFE */}
 
             <section
@@ -416,23 +530,23 @@ function Projects() {
 
                 <div className="project-content">
 
-
                     <div className="project-video">
 
                         <video
+                            ref={(element) => {
+                                videoRefs.current[0] = element;
+                            }}
                             src={conwayVideo}
-                            autoPlay
                             loop
                             muted
                             playsInline
+                            preload="metadata"
                         />
 
                     </div>
 
 
-
                     <div className="project-info">
-
 
                         <div className="project-title">
 
@@ -447,7 +561,6 @@ function Projects() {
                         </div>
 
 
-
                         <p>
                             An implementation of Conway's
                             Game of Life, a cellular
@@ -455,7 +568,6 @@ function Projects() {
                             die, and reproduce according
                             to a set of rules.
                         </p>
-
 
 
                         <div className="tech-list">
@@ -467,7 +579,6 @@ function Projects() {
                         </div>
 
 
-
                         <Link
                             to="/conways-game-of-life"
                             className="project-button"
@@ -475,14 +586,11 @@ function Projects() {
                             Learn More
                         </Link>
 
-
                     </div>
-
 
                 </div>
 
             </section>
-
 
 
             {/* ARDUINO CONWAY'S GAME OF LIFE */}
@@ -498,23 +606,23 @@ function Projects() {
 
                 <div className="project-content">
 
-
                     <div className="project-video arduino-video">
 
                         <video
+                            ref={(element) => {
+                                videoRefs.current[1] = element;
+                            }}
                             src={arduinoVideo}
-                            autoPlay
                             loop
                             muted
                             playsInline
+                            preload="metadata"
                         />
 
                     </div>
 
 
-
                     <div className="project-info">
-
 
                         <div className="project-title">
 
@@ -529,14 +637,12 @@ function Projects() {
                         </div>
 
 
-
                         <p>
                             A physical implementation
                             of Conway's Game of Life
                             using an Arduino,
                             breadboards, and LEDs.
                         </p>
-
 
 
                         <div className="tech-list">
@@ -552,7 +658,6 @@ function Projects() {
                         </div>
 
 
-
                         <Link
                             to="/conways-game-of-life"
                             className="project-button"
@@ -560,14 +665,11 @@ function Projects() {
                             Learn More
                         </Link>
 
-
                     </div>
-
 
                 </div>
 
             </section>
-
 
         </main>
 
